@@ -29,18 +29,15 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setSize(sizes.width, sizes.height);
 
-// Time
-let time = Date.now();
+// Clock
+const clock = new THREE.Clock();
 
 // Animation
 const tick = () => {
-  // Time
-  const currentTime = Date.now();
-  const deltaTime = currentTime - time;
-  time = currentTime;
+  const elapsedTime = clock.getElapsedTime();
 
   // Update Objects
-  mesh.rotation.y += 0.001 * deltaTime;
+  mesh.rotation.y = elapsedTime * Math.PI * 2; // 1 rotation every second
 
   // Render
   renderer.render(scene, camera);
