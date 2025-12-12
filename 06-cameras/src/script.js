@@ -29,7 +29,16 @@ scene.add(mesh);
 //   0.1,
 //   1000
 // );
-const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 100);
+
+const aspectRatio = sizes.width / sizes.height;
+const camera = new THREE.OrthographicCamera(
+  -1 * aspectRatio,
+  1 * aspectRatio,
+  1,
+  -1,
+  0.1,
+  100
+);
 camera.position.x = 2;
 camera.position.y = 2;
 camera.position.z = 2;
