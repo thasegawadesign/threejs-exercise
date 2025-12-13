@@ -6,6 +6,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
  * Debug
  */
 const gui = new GUI();
+const debugObject = {};
 
 /**
  * Base
@@ -19,12 +20,21 @@ const scene = new THREE.Scene();
 /**
  * Object
  */
+debugObject.color = '#6547b7';
 const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2);
-const material = new THREE.MeshBasicMaterial({ color: '#ff0000' });
+const material = new THREE.MeshBasicMaterial({ color: debugObject.color });
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
 gui.add(mesh.position, 'y').min(-3).max(3).step(0.01).name('elevation');
+
+gui.add(mesh, 'visible').name('isVisible');
+
+gui.add(material, 'wireframe');
+
+gui.addColor(debugObject, 'color').onChange((value) => {
+  material.color.set(value);
+});
 
 /**
  * Sizes
