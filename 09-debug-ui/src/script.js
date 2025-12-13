@@ -23,7 +23,10 @@ const scene = new THREE.Scene();
  */
 debugObject.color = '#6547b7';
 const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2);
-const material = new THREE.MeshBasicMaterial({ color: debugObject.color });
+const material = new THREE.MeshBasicMaterial({
+  color: debugObject.color,
+  wireframe: true,
+});
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
@@ -41,6 +44,18 @@ debugObject.spin = () => {
   gsap.to(mesh.rotation, { duration: 1, y: mesh.rotation.y + Math.PI * 2 });
 };
 gui.add(debugObject, 'spin').name('Spin!');
+
+debugObject.subdivision = 2;
+gui
+  .add(debugObject, 'subdivision')
+  .min(1)
+  .max(20)
+  .step(1)
+  .name('Subdivisions')
+  .onFinishChange((value) => {
+    mesh.geometry.dispose();
+    mesh.geometry = new THREE.BoxGeometry(1, 1, 1, value, value, value);
+  });
 
 /**
  * Sizes
