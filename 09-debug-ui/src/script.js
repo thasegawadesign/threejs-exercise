@@ -6,7 +6,19 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 /**
  * Debug
  */
-const gui = new GUI();
+const gui = new GUI({
+  width: 340,
+  title: 'Nice debug UI',
+  closeFolders: false,
+});
+
+window.addEventListener('keydown', (event) => {
+  if (event.key == 'h') {
+    const shouldShow = gui._hidden;
+    gui.show(shouldShow);
+  }
+});
+
 const debugObject = {};
 
 /**
