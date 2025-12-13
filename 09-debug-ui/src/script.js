@@ -31,6 +31,7 @@ const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
 const cubeTweaks = gui.addFolder('Awesome cube');
+// cubeTweaks.close();
 
 cubeTweaks.add(mesh.position, 'y').min(-3).max(3).step(0.01).name('elevation');
 
