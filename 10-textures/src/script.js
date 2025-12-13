@@ -5,18 +5,18 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
  * Textures
  */
 const loadingManager = new THREE.LoadingManager();
-loadingManager.onStart = () => {
-  console.log('onStart');
-};
-loadingManager.onLoad = () => {
-  console.log('onLoad');
-};
-loadingManager.onProgress = (url, itemsLoaded, itemsTotal) => {
-  console.log('onProgress');
-};
-loadingManager.onError = (url) => {
-  console.log('onError');
-};
+// loadingManager.onStart = () => {
+//   console.log('onStart');
+// };
+// loadingManager.onLoad = () => {
+//   console.log('onLoad');
+// };
+// loadingManager.onProgress = (url, itemsLoaded, itemsTotal) => {
+//   console.log('onProgress');
+// };
+// loadingManager.onError = (url) => {
+//   console.log('onError');
+// };
 
 const textureLoader = new THREE.TextureLoader(loadingManager);
 const colorTexture = textureLoader.load('/textures/door/color.jpg');
