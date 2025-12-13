@@ -1,3 +1,4 @@
+import gsap from 'gsap';
 import GUI from 'lil-gui';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -35,6 +36,11 @@ gui.add(material, 'wireframe');
 gui.addColor(debugObject, 'color').onChange((value) => {
   material.color.set(value);
 });
+
+debugObject.spin = () => {
+  gsap.to(mesh.rotation, { duration: 1, y: mesh.rotation.y + Math.PI * 2 });
+};
+gui.add(debugObject, 'spin').name('Spin!');
 
 /**
  * Sizes
